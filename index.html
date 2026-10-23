@@ -1516,15 +1516,15 @@ ATURAN:
           }
         };
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
-        const result = await fetchWithRetry(url, {
-          method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-          },
-          body: JSON.stringify(payload)
-        });
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
+const result = await fetchWithRetry(url, {
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify(payload)
+});
         const rawText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
         if (!rawText) throw new Error('Respons analisis kosong.');
         return JSON.parse(rawText);
@@ -1573,14 +1573,14 @@ ${cardsPrompt}`;
         };
 
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
-        const result = await fetchWithRetry(url, {
-          method: 'POST',
-          headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-          },
-          body: JSON.stringify(payload)
-        });
+const result = await fetchWithRetry(url, {
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${apiKey}`
+  },
+  body: JSON.stringify(payload)
+});
 
         const imagePart = result?.candidates?.[0]?.content?.parts?.find((p) => p.inlineData);
         if (!imagePart?.inlineData?.data) throw new Error('Gagal merender gambar.');
