@@ -1516,12 +1516,11 @@ ATURAN:
           }
         };
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 const result = await fetchWithRetry(url, {
   method: 'POST',
   headers: { 
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}`
+    'Content-Type': 'application/json'
   },
   body: JSON.stringify(payload)
 });
@@ -1572,12 +1571,11 @@ ${cardsPrompt}`;
           }
         };
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
 const result = await fetchWithRetry(url, {
   method: 'POST',
   headers: { 
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${apiKey}`
+    'Content-Type': 'application/json'
   },
   body: JSON.stringify(payload)
 });
