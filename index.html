@@ -1516,10 +1516,14 @@ ATURAN:
           }
         };
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+        // URL tanpa parameter key=, diganti dengan Authorization Bearer di headers
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
         const result = await fetchWithRetry(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
           body: JSON.stringify(payload)
         });
         const rawText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
@@ -1569,10 +1573,14 @@ ${cardsPrompt}`;
           }
         };
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${apiKey}`;
+        // URL tanpa parameter key=, diganti dengan Authorization Bearer di headers
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
         const result = await fetchWithRetry(url, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${apiKey}`
+          },
           body: JSON.stringify(payload)
         });
 
