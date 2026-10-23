@@ -1516,13 +1516,13 @@ ATURAN:
           }
         };
 
-        // URL tanpa parameter key=, diganti dengan Authorization Bearer di headers
+        // URL endpoint tanpa parameter key=
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
         const result = await fetchWithRetry(url, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+            'Authorization': `Bearer ${apiKey}` // <-- Menggunakan Bearer Token untuk kunci AQ.
           },
           body: JSON.stringify(payload)
         });
@@ -1573,13 +1573,13 @@ ${cardsPrompt}`;
           }
         };
 
-        // URL tanpa parameter key=, diganti dengan Authorization Bearer di headers
+        // URL endpoint tanpa parameter key=
         const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
         const result = await fetchWithRetry(url, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
+          'Authorization': `Bearer ${apiKey}` // <-- Menggunakan Bearer Token untuk kunci AQ.
           },
           body: JSON.stringify(payload)
         });
