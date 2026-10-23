@@ -330,7 +330,7 @@
   <!-- VANILLA SCRIPT -->
   <script>
     (function () {
-      const apiKey = "AQ.Ab8RN6JEj78YnJitnFMYml2IUWI6mxT8_D90RVcZXJi60wuIjw";
+      const apiKey = "AIzaSyAvwtLkj6HHyM_o0OlfugEQVNTq_Znxoo8";
       const PRESETS_STORAGE_KEY = "zivi_ai_pro_user_favorites_clean_v3";
 
       const SVG_ICONS = {
@@ -1516,16 +1516,17 @@ ATURAN:
           }
         };
 
-        // URL endpoint tanpa parameter key=
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent`;
+        // --- UBAH BAGIAN INI (Tambahkan ?key=${apiKey} dan hapus header Authorization) ---
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
         const result = await fetchWithRetry(url, {
           method: 'POST',
           headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}` // <-- Menggunakan Bearer Token untuk kunci AQ.
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(payload)
         });
+        // ---------------------------------------------------------------------------------
+
         const rawText = result?.candidates?.[0]?.content?.parts?.[0]?.text;
         if (!rawText) throw new Error('Respons analisis kosong.');
         return JSON.parse(rawText);
@@ -1573,16 +1574,16 @@ ${cardsPrompt}`;
           }
         };
 
-        // URL endpoint tanpa parameter key=
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent`;
+        // --- UBAH BAGIAN INI (Tambahkan ?key=${apiKey} dan hapus header Authorization) ---
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-image:generateContent?key=${apiKey}`;
         const result = await fetchWithRetry(url, {
           method: 'POST',
           headers: { 
-            'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}` // <-- Menggunakan Bearer Token untuk kunci AQ.
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(payload)
         });
+        // ---------------------------------------------------------------------------------
 
         const imagePart = result?.candidates?.[0]?.content?.parts?.find((p) => p.inlineData);
         if (!imagePart?.inlineData?.data) throw new Error('Gagal merender gambar.');
